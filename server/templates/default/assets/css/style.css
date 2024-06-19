@@ -1,0 +1,239 @@
+html,
+      body {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        background-color: #eee;
+      }
+      .header {
+        box-sizing: border-box;
+        max-width: 820px;
+        padding: 0 10px;
+        margin: 50px auto 20px;
+      }
+      .container {
+        box-sizing: border-box;
+        font-size: 14px;
+        margin: 0 auto 30px;
+        max-width: 820px;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+        padding: 15px;
+        border-radius: 5px;
+        background-color: #fff;
+      }
+      .nickname {
+        font-size: 26px;
+      }
+      .sign {
+        font-size: 12px;
+        color: #666;
+      }
+      .nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        padding-right: 10px;
+      }
+      .nav ul {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0;
+        list-style-type: none;
+      }
+      .nav .search {
+        padding-left: 10px;
+      }
+      .nav .search input {
+        border-top: none;
+        border-right: none;
+        border-left: none;
+        outline: none;
+        border-radius: 0;
+        padding: 0;
+        height: 30px;
+      }
+      .nav-item {
+        padding: 0 10px;
+      }
+      .main {
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+
+      .footer {
+        margin-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 12px;
+        color: #999;
+        opacity: 0.8;
+      }
+/*蓝色*/
+  a,
+  .blue,
+  a.dark[href]:hover {
+    color: #2a80eb;
+  }
+
+  /*hover蓝色*/
+  a:hover {
+    color: #0057c3;
+  }
+
+  /*灰色*/
+  .gray {
+    color: #a2a9b6;
+  }
+
+  /*白色*/
+  .white {
+    color: #fff;
+  }
+
+  /* 绿色 */
+  .green {
+    color: #1cad70;
+  }
+
+  /* 橘色 */
+  .orange {
+    color: #f59b00;
+  }
+
+  /* 红色 */
+  .red {
+    color: #eb4646;
+  }
+
+  /* 浅色 */
+  .light {
+    color: #f7f9fa;
+  }
+  /* 通用样式 */
+  .footer {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    color: #999;
+    opacity: 0.8;
+  }
+
+  .form .line-title {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    font-weight: 500;
+    position: relative;
+    margin-left: 10px;
+    margin-bottom: 20px;
+  }
+  .form .line-title::before {
+    content: '';
+    position: absolute;
+    width: 4px;
+    left: -10px;
+    top: 3px;
+    right: 0;
+    bottom: 3px;
+    height: inherit;
+    background-color: #2e353c;
+  }
+  .form input,
+  .form button {
+    width: 100%;
+  }
+  .form-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .form-item label {
+    position: relative;
+    min-width: 90px;
+    text-align: right;
+  }
+  .form-item label .required {
+    color: #eb4646;
+  }
+  .list ul {
+    padding: 0;
+    list-style-type: none;
+  }
+  .list li {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 15px;
+  }
+  .list .hr {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-right: 8px;
+    margin-left: 8px;
+    height: 1px;
+    border: 0;
+    border-bottom: 1px dotted #ccc;
+    flex: 1;
+  }
+  .list .date {
+    font-size: 12px;
+    color: #999;
+  }
+  .page {
+    display: flex;
+    justify-content: center;
+    border-radius: 3px;
+  }
+  .page .ui-page-x {
+    display: flex;
+    border-radius: 3px;
+  }
+  .page .ui-page {
+    min-width: 24px;
+    border-radius: 3px;
+  }
+  .page a.ui-page:hover {
+    border-color: transparent;
+    background-color: #eee;
+  }
+/*文章详情*/
+  .post {
+    font-size: 16px;
+    color: #333;
+  }
+  .post-footer {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #999;
+    margin-bottom: 30px;
+  }
+  .post-footer .left span {
+    margin-right: 5px;
+  }
+  .post-footer a {
+    margin-left: 10px;
+  }
+  .pre-next {
+    color: #666;
+    margin-top: 30px;
+    margin-bottom: 15px;
+  }
+  .pre {
+    margin-bottom: 5px;
+  }
+  pre {
+    border-radius: 3px;
+  }
+  img {
+    max-width: 100%;
+  }
+  p {
+    line-height: 1.6;
+  }

@@ -37,6 +37,7 @@ import (
 	"github.com/chenmingyong0423/fnote/server/internal/post_visit"
 	"github.com/chenmingyong0423/fnote/server/internal/tag"
 	"github.com/chenmingyong0423/fnote/server/internal/visit_log"
+	"github.com/chenmingyong0423/fnote/server/internal/web_engine"
 	"github.com/chenmingyong0423/fnote/server/internal/website_config"
 	"github.com/gin-gonic/gin"
 	"github.com/google/wire"
@@ -88,5 +89,7 @@ func initializeApp() (*gin.Engine, error) {
 		email.InitEmailModule,
 		backup.InitBackupModule,
 		wire.FieldsOf(new(*backup.Module), "Hdl"),
+		web_engine.InitWebEngineModule,
+		wire.FieldsOf(new(*web_engine.Module), "Hdl"),
 	))
 }

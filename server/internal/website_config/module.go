@@ -15,14 +15,16 @@
 package website_config
 
 import (
+	"github.com/chenmingyong0423/fnote/server/internal/website_config/internal/domain"
 	"github.com/chenmingyong0423/fnote/server/internal/website_config/internal/service"
 	"github.com/chenmingyong0423/fnote/server/internal/website_config/internal/web"
 )
 
 type (
-	Handler = web.WebsiteConfigHandler
-	Service = service.IWebsiteConfigService
-	Module  struct {
+	Handler       = web.WebsiteConfigHandler
+	Service       = service.IWebsiteConfigService
+	WebsiteConfig = domain.IndexConfig
+	Module        struct {
 		Svc Service
 		Hdl *Handler
 	}

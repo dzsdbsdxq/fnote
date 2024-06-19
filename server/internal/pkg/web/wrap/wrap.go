@@ -41,6 +41,7 @@ func SuccessResponse() *ResponseBody[any] {
 }
 
 func SuccessResponseWithData[T any](data T) *ResponseBody[T] {
+	fmt.Println("SuccessResponseWithData:", data)
 	return &ResponseBody[T]{
 		Code:    0,
 		Message: "success",
@@ -157,5 +158,17 @@ func WrapWithBody[T any, R any](fn func(ctx *gin.Context, req R) (T, error)) gin
 			return
 		}
 		ctx.JSON(http.StatusOK, result)
+	}
+}
+
+func WrapHtml[T any](fn func(ctx *gin.Context) (T, error), tmpl string) gin.HandlerFunc {
+	return func(ctx *gin.Context) {
+		result, err := fn(ctx)
+		if err != nil {
+			ErrorHandler(ctx, err)
+			return
+		}
+		fmt.Println("result:", result)
+		ctx.HTML(http.StatusOK, fmt.Sprintf("%s.tpl", tmpl), result)
 	}
 }
