@@ -1,6 +1,6 @@
 system:
   # 存放静态文件的目录，例如文章封面，建议 /fnote/static/
-  static_path: /tmp/fnote/static/
+  static_path: ./tmp/fnote/static/
   time_zone: Asia/Shanghai
 gin:
   # 跨域配置，默认 “*“
@@ -34,8 +34,8 @@ logger:
   time_format: "2006-01-02 15:04:05"
 mongodb:
   uri: mongodb://localhost:27017
-  username: fnote-user
-  password: 12345678
+  username:
+  password:
   auth_source: fnote
   database: fnote
 website:
