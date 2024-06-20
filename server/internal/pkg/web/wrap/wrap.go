@@ -41,7 +41,6 @@ func SuccessResponse() *ResponseBody[any] {
 }
 
 func SuccessResponseWithData[T any](data T) *ResponseBody[T] {
-	fmt.Println("SuccessResponseWithData:", data)
 	return &ResponseBody[T]{
 		Code:    0,
 		Message: "success",
@@ -168,7 +167,6 @@ func WrapHtml[T any](fn func(ctx *gin.Context) (T, error), tmpl string) gin.Hand
 			ErrorHandler(ctx, err)
 			return
 		}
-		fmt.Println("result:", result)
 		ctx.HTML(http.StatusOK, fmt.Sprintf("%s.tpl", tmpl), result)
 	}
 }

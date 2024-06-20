@@ -25,11 +25,20 @@ func (w *WebEngineHandler) RegisterGinRoutes(engine *gin.Engine) {
 	w.InitHomeFuncMap(engine)
 	engine.LoadHTMLGlob("./templates/default/*.tpl")
 	engine.GET("/", apiwrap.WrapHtml(w.IndexHome, "index"))
-	engine.GET("/post/:id", apiwrap.WrapHtml(w.IndexHome, "index"))
+	engine.GET("/post/:id", apiwrap.WrapHtml(w.PostDetail, "post"))
 }
 
-func (w *WebEngineHandler) IndexHome(ctx *gin.Context) (*apiwrap.ResponseBody[IndexHomeVO], error) {
-	return apiwrap.SuccessResponseWithData(IndexHomeVO{}), nil
+func (w *WebEngineHandler) IndexHome(ctx *gin.Context) (*IndexHomeVO, error) {
+	return &IndexHomeVO{}, nil
+}
+func (w *WebEngineHandler) PostDetail(ctx *gin.Context) (*PostDetail, error) {
+	fmt.Println(ctx.Param("id"))
+	sug := ctx.Param("id")
+	postDetail, err := w.serv.GetPostDetailById(ctx, sug, ctx.ClientIP())
+	if err != nil {
+		return nil, err
+	}
+	return &PostDetail{Id: ctx.Param("id"), Post: *postDetail}, nil
 }
 
 func (w *WebEngineHandler) InitHomeFuncMap(engine *gin.Engine) {

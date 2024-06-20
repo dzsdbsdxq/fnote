@@ -5,6 +5,7 @@ package web_engine
 import (
 	"github.com/chenmingyong0423/fnote/server/internal/category"
 	"github.com/chenmingyong0423/fnote/server/internal/post"
+	"github.com/chenmingyong0423/fnote/server/internal/post_like"
 	"github.com/chenmingyong0423/fnote/server/internal/web_engine/internal/service"
 	"github.com/chenmingyong0423/fnote/server/internal/web_engine/internal/web"
 	"github.com/chenmingyong0423/fnote/server/internal/website_config"
@@ -18,7 +19,7 @@ var ConfigProviders = wire.NewSet(web.NewWebEngineHandler, service.NewWebEngineS
 
 func InitWebEngineModule(eventBus *eventbus.EventBus,
 	websiteConfigMdl *website_config.Module,
-	categoryMdl *category.Module, postMdl *post.Module) *Module {
+	categoryMdl *category.Module, postMdl *post.Module, postLikeMdl *post_like.Module) *Module {
 	panic(wire.Build(
 		ConfigProviders,
 		wire.Struct(new(Module), "Svc", "Hdl"),

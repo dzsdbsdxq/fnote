@@ -32,6 +32,7 @@ type (
 	ExtraPost     = domain.ExtraPost
 	Category4Post = domain.Category4Post
 	Tag4Post      = domain.Tag4Post
+	DetailPost    = domain.DetailPostVO
 	Module        struct {
 		Svc Service
 		Hdl *Handler

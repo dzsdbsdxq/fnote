@@ -9,6 +9,7 @@ package web_engine
 import (
 	"github.com/chenmingyong0423/fnote/server/internal/category"
 	"github.com/chenmingyong0423/fnote/server/internal/post"
+	"github.com/chenmingyong0423/fnote/server/internal/post_like"
 	"github.com/chenmingyong0423/fnote/server/internal/web_engine/internal/service"
 	"github.com/chenmingyong0423/fnote/server/internal/web_engine/internal/web"
 	"github.com/chenmingyong0423/fnote/server/internal/website_config"
@@ -18,8 +19,8 @@ import (
 
 // Injectors from wire.go:
 
-func InitWebEngineModule(eventBus *eventbus.EventBus, websiteConfigMdl *website_config.Module, categoryMdl *category.Module, postMdl *post.Module) *Module {
-	webEngineService := service.NewWebEngineService(eventBus, websiteConfigMdl, categoryMdl, postMdl)
+func InitWebEngineModule(eventBus *eventbus.EventBus, websiteConfigMdl *website_config.Module, categoryMdl *category.Module, postMdl *post.Module, postLikeMdl *post_like.Module) *Module {
+	webEngineService := service.NewWebEngineService(eventBus, websiteConfigMdl, categoryMdl, postMdl, postLikeMdl)
 	webEngineHandler := web.NewWebEngineHandler(webEngineService)
 	module := &Module{
 		Svc: webEngineService,
