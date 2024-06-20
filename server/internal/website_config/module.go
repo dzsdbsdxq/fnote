@@ -21,10 +21,10 @@ import (
 )
 
 type (
-	Handler       = web.WebsiteConfigHandler
-	Service       = service.IWebsiteConfigService
-	WebsiteConfig = domain.IndexConfig
-	Module        struct {
+	Handler     = web.WebsiteConfigHandler
+	Service     = service.IWebsiteConfigService
+	IndexConfig = domain.IndexConfig
+	Module      struct {
 		Svc Service
 		Hdl *Handler
 	}

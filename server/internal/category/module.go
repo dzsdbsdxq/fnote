@@ -24,6 +24,7 @@ type (
 	Handler  = web.CategoryHandler
 	Service  = service.ICategoryService
 	Category = domain.Category
+	MenuVO   = web.MenuVO
 	Module   struct {
 		Svc Service
 		Hdl *Handler

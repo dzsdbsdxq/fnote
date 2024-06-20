@@ -33,7 +33,7 @@ logger:
   # 日志时间格式，默认 "2006-01-02 15:04:05"
   time_format: "2006-01-02 15:04:05"
 mongodb:
-  uri: mongodb://localhost:27017
+  uri: mongodb://localhost:27017 #mongodb://fnote-user:12345678@127.0.0.1:27017/fnote?authSource=fnote
   username: fnote-user
   password: 12345678
   auth_source: fnote

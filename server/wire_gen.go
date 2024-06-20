@@ -80,7 +80,7 @@ func initializeApp() (*gin.Engine, error) {
 	postLikeHandler := post_likeModule.Hdl
 	post_visitModule := post_visit.InitPostVisitModule(database)
 	postVisitHandler := post_visitModule.Hdl
-	web_engineModule := web_engine.InitWebEngineModule(eventBus,website_configModule,categoryModule)
+	web_engineModule := web_engine.InitWebEngineModule(eventBus, website_configModule, categoryModule, postModule)
 	webEngineHandler := web_engineModule.Hdl
 	engine, err := ioc.NewGinEngine(fileHandler, categoryHandler, commentHandler, websiteConfigHandler, friendHandler, postHandler, visitLogHandler, messageTemplateHandler, tagHandler, dataAnalysisHandler, countStatsHandler, backupHandler, v2, validators, postIndexHandler, postDraftHandler, aggregatePostHandler, postLikeHandler, postVisitHandler, webEngineHandler)
 	if err != nil {

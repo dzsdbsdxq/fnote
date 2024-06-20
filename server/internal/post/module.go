@@ -24,6 +24,10 @@ type (
 	Handler       = web.PostHandler
 	Service       = service.IPostService
 	Post          = domain.Post
+	PostRequest   = domain.PostRequest
+	PageRequest   = domain.PageRequest
+	Page2         = domain.Page2
+	Sorting       = domain.Sorting
 	PrimaryPost   = domain.PrimaryPost
 	ExtraPost     = domain.ExtraPost
 	Category4Post = domain.Category4Post
