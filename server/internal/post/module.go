@@ -24,6 +24,7 @@ type (
 	Handler       = web.PostHandler
 	Service       = service.IPostService
 	Post          = domain.Post
+	PageReq       = web.PageRequest
 	PostRequest   = domain.PostRequest
 	PageRequest   = domain.PageRequest
 	Page2         = domain.Page2

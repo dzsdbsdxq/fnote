@@ -7,9 +7,9 @@
 <div class="container">
   {{ block "nav.tpl" . }}{{ end }}
   <main class="main">
-    <article class="post cherry-markdown">
-        <input type="hidden" id="content" value="{{ .Post.ExtraPost.Content }}" />
-        <div class="content markdown-body" id="content-container">{{ .Post.ExtraPost.Content }}</div>
+    <article class="post">
+        <h1 class="title">{{ .Data.Post.PrimaryPost.Title }}</h1>
+        <div class="content markdown-body" id="content-container">{{ .Data.Post.ExtraPost.Content }}</div>
         <div class="pre-next">
             <div class="pre">
                 上一篇：<a href="/post?id=1111">aaaaa</a>
@@ -20,7 +20,7 @@
         </div>
         <div class="post-footer">
           <div class="left">
-            <span>发布@2024/05/17</span>
+            <span>发布@{{func_format_timestamp .Data.Post.PrimaryPost.CreatedAt "date"}}</span>
             <span>更新@2024/06/16</span>
             <span>浏览量(15)</span>
           </div>
@@ -38,6 +38,6 @@
             return hljs.highlight(code, {language: validLanguage}).value;
         },
     });
-    contentEle.innerHTML = marked.parse(document.getElementById("content").value);
+    contentEle.innerHTML = marked.parse(contentEle.innerHTML);
 </script>
 {{ block "footer.tpl" . }}{{ end }}

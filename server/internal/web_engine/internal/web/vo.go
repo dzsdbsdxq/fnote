@@ -12,3 +12,9 @@ type PostDetail struct {
 	Id   string          `json:"id"`
 	Post post.DetailPost `json:"post"`
 }
+
+type CommonParams[T any] struct {
+	PageIdx     string
+	PageRequest post.PageReq
+	Data        T
+}

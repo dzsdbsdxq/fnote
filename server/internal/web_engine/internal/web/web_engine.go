@@ -9,6 +9,7 @@ import (
 	"github.com/chenmingyong0423/fnote/server/internal/website_config"
 	"github.com/gin-gonic/gin"
 	"html/template"
+	"strconv"
 	"time"
 )
 
@@ -26,19 +27,43 @@ func (w *WebEngineHandler) RegisterGinRoutes(engine *gin.Engine) {
 	engine.LoadHTMLGlob("./templates/default/*.tpl")
 	engine.GET("/", apiwrap.WrapHtml(w.IndexHome, "index"))
 	engine.GET("/post/:id", apiwrap.WrapHtml(w.PostDetail, "post"))
+	engine.GET("/categories/:id", apiwrap.WrapHtml(w.GetCategories, "categories"))
 }
 
-func (w *WebEngineHandler) IndexHome(ctx *gin.Context) (*IndexHomeVO, error) {
-	return &IndexHomeVO{}, nil
+func (w *WebEngineHandler) IndexHome(ctx *gin.Context) (*CommonParams[IndexHomeVO], error) {
+	return &CommonParams[IndexHomeVO]{
+		PageIdx: "index",
+	}, nil
 }
-func (w *WebEngineHandler) PostDetail(ctx *gin.Context) (*PostDetail, error) {
-	fmt.Println(ctx.Param("id"))
+func (w *WebEngineHandler) PostDetail(ctx *gin.Context) (*CommonParams[PostDetail], error) {
 	sug := ctx.Param("id")
 	postDetail, err := w.serv.GetPostDetailById(ctx, sug, ctx.ClientIP())
 	if err != nil {
 		return nil, err
 	}
-	return &PostDetail{Id: ctx.Param("id"), Post: *postDetail}, nil
+	return &CommonParams[PostDetail]{
+		PageIdx: "postDetail",
+		Data:    PostDetail{Id: sug, Post: *postDetail},
+	}, nil
+}
+func (w *WebEngineHandler) GetCategories(ctx *gin.Context) (*CommonParams[post.PageReq], error) {
+	pageIdx := ctx.Param("id")
+	pageNo, _ := strconv.ParseInt(ctx.Param("pageNo"), 10, 64)
+	pageSize, _ := strconv.ParseInt(ctx.Param("pageSize"), 10, 64)
+	if pageNo == 0 {
+		pageNo = 1
+	}
+	if pageSize == 0 {
+		pageSize = 30
+	}
+	return &CommonParams[post.PageReq]{
+		PageIdx: pageIdx,
+		PageRequest: post.PageReq{
+			PageNo:   pageNo,
+			PageSize: pageSize,
+		},
+	}, nil
+
 }
 
 func (w *WebEngineHandler) InitHomeFuncMap(engine *gin.Engine) {
@@ -55,10 +80,10 @@ func (w *WebEngineHandler) InitHomeFuncMap(engine *gin.Engine) {
 			latestPost, _ := w.serv.GetLatestPosts(&gin.Context{}, count)
 			return latestPost
 		},
-		"func_posts": func(page int64, pageSize int64, field string, order string, category []string, tags []string) []*post.Post {
+		"func_posts": func(page int64, pageSize int64, field string, order string, category string, tags string) []*post.Post {
 			req := &post.PostRequest{
-				Categories: category,
-				Tags:       tags,
+				Categories: []string{category},
+				Tags:       []string{tags},
 				PageRequest: post.PageRequest{
 					Page2: post.Page2{
 						PageNo:   page,
