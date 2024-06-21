@@ -1,14 +1,22 @@
 {{ block "header.tpl" . }}{{ end }}
-<link rel="stylesheet" type="text/css" href="https://mapi.net.cn/assets/css/github-markdown.css">
-<link rel="stylesheet" type="text/css" href="https://mapi.net.cn/assets/css/highlight.css">
+<link rel="stylesheet" type="text/css" href="/themes/assets/markdown/css/github-markdown.css">
+<link rel="stylesheet" type="text/css" href="/themes/assets/css/highlight.css">
 
-<script src="https://mapi.net.cn/assets/js/marked.min.js"></script>
-<script src="https://mapi.net.cn/assets/js/highlight.js"></script>
+<script src="/themes/assets/js/marked.min.js"></script>
+<script src="/themes/assets/js/highlight.js"></script>
+{{ block "nav.tpl" . }}{{ end }}
 <div class="container">
-  {{ block "nav.tpl" . }}{{ end }}
   <main class="main">
     <article class="post">
         <h1 class="title">{{ .Data.Post.PrimaryPost.Title }}</h1>
+        <div class="post-footer">
+          <div class="left">
+            <span>{{ .Data.Post.PrimaryPost.Author}}</span>
+            <span>发布@{{func_format_timestamp .Data.Post.PrimaryPost.CreatedAt "date"}}</span>
+            <span>浏览量({{ .Data.Post.PrimaryPost.VisitCount}})</span>
+            <span>点赞({{ .Data.Post.PrimaryPost.LikeCount}})</span>
+          </div>
+        </div>
         <div class="content markdown-body" id="content-container">{{ .Data.Post.ExtraPost.Content }}</div>
         <div class="pre-next">
             <div class="pre">
@@ -17,13 +25,6 @@
               <div class="next">
                 下一篇：<a href="/post?id=22222">bbbbb</a>
               </div>
-        </div>
-        <div class="post-footer">
-          <div class="left">
-            <span>发布@{{func_format_timestamp .Data.Post.PrimaryPost.CreatedAt "date"}}</span>
-            <span>更新@2024/06/16</span>
-            <span>浏览量(15)</span>
-          </div>
         </div>
       </article>
   </main>

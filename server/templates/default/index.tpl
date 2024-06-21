@@ -1,6 +1,6 @@
 {{ block "header.tpl" . }}{{ end }}
+{{ block "nav.tpl" . }}{{ end }}
 <div class="container">
-    {{ block "nav.tpl" . }}{{ end }}
   <main class="main">
     <div class="list">
         <ul>
@@ -17,7 +17,9 @@
             </li>
             {{end}}
         </ul>
-        <div id="page" class="page" data-total="100"></div>
+        <div id="page" class="page" data-total="100">
+        {{ block "paging.tpl" . }}{{ end }}
+        </div>
       </div>
   </main>
 </div>

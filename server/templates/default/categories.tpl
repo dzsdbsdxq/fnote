@@ -1,6 +1,6 @@
 {{ block "header.tpl" . }}{{ end }}
+{{ block "nav.tpl" . }}{{ end }}
 <div class="container">
-    {{ block "nav.tpl" . }}{{ end }}
   <main class="main">
     <div class="list">
         <ul>
